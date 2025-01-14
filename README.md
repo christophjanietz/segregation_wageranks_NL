@@ -3,7 +3,7 @@ Dashboard visualizing sex segregation across wage ranks in Dutch organizations b
 
 
 
-Github:
+Github: \
 OSF:
 
 ## Data Availability
