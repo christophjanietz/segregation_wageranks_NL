@@ -21,25 +21,9 @@ options(scipen=999)
 # Load data --------------------------------------------------------------------
 load('./data/sexseg_org.RData')
 
-# create a label dictionary
-labels<- c(
-  "wgt" = "Weight",
-  "subpop" = "Subpopulation",
-  "year" = "Year",
-  "withinq" = "Wage quintile",
-  "withind" = "Wage decile",
-  "share" = "Share",
-  "tot_woman" = "Overall share of women across wage tiers",
-  "n_org" = "Number of organizations",
-  "sex" = "Administrative sex category",
-  "share" = "Share",
-  "pc" = "Percentage",
-  "pc_tw = Overall share of women across wage tiers (Percentage)"
-)
-
 # User interface (UI) ----------------------------------------------------------
 ui <- fluidPage(theme = shinytheme("simplex"),
-  ## CSS modifications ---------------------------------------------------------
+  ## Slider modification -------------------------------------------------------
   tags$head(tags$style(type='text/css', ".slider-animate-button { font-size: 20pt !important; }")),
   tags$style(type = "text/css", ".irs-grid-pol.small {height: 0px;}"),
   
@@ -112,9 +96,9 @@ ui <- fluidPage(theme = shinytheme("simplex"),
                  p(),
                  hr(), 
                  # Buttons
-                 downloadButton("save",  "Download wage quintile plot"),
+                 downloadButton("save",  "Wage quintile plot"),
                  hr(),
-                 downloadButton("save2", "Download wage decile plot"), 
+                 downloadButton("save2", "Wage decile plot"), 
                  p(),
                  hr(),
                  helpText(h4("Share & Code:")),
@@ -270,23 +254,19 @@ server <- function(input, output, session) {
   
   # Download handlers ----------------------------------------------------------
   output$save <- downloadHandler(
-    file = "wagequintile_plot.png", 
+    file = "wagequintile_plot.pdf", 
     content = function(file) {
-      png(file = file, width=900)
-      plotInput()
-      dev.off()
-    })
+      ggsave(file,plot=plotInput(), width = 18, height = 12, units = "in")
+    }) 
   
   output$save2 <- downloadHandler(
-    file = "wagedecile_plot.png" , 
+    file = "wagedecile_plot.pdf" , 
     content = function(file) {
-      png(file = file, width=900, height=600)
-      plotInput2()
-      dev.off()
+      ggsave(file,plot=plotInput2(), width = 18, height = 12, units = "in")
     })    
 
 } 
 
 # Run the app ------------------------------------------------------------------
-enableBookmarking(store = "server")
+enableBookmarking(store = "url")
 shinyApp(ui, server)
