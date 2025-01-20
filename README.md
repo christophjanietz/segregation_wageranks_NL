@@ -3,10 +3,10 @@ Dashboard visualizing sex segregation across wage ranks in Dutch organizations b
 
 https://cjanietz.shinyapps.io/sexsegregation_wageranks_NL/
 
--------------
+--------
 Github: https://github.com/christophjanietz/sexsegregation_wageranks_NL \
 OSF: https://osf.io/sak3d/
--------------
+
 
 ## Data Availability
 This dashboard uses non-public microdata from Statistics Netherlands (CBS). Under certain conditions, these microdata are accessible for statistical and scientific research. For further information: microdata@cbs.nl.
