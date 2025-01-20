@@ -220,7 +220,7 @@ server <- function(input, output, session) {
           Calculations are based on administrative linked employer-employee register data <a target="_blank" href="https://www.cbs.nl/nl-nl/onze-diensten/maatwerk-en-microdata/microdata-zelf-onderzoek-doen/microdatabestanden/spolisbus-banen-en-lonen-volgens-polisadministratie">(SPOLIS)</a> covering the entire underlying population. 
           Wage ranks are assigned to employees using the organization-specific distribution of hourly wages in September of a given year. 
           The first wage rank comprises the bottom 20% of wage earners, whereas the fifth wage rank comprises the top 20% of wage earners in each organization. 
-          The overall share of men and women per wage rank is calculated in two ways: (1) at the individual level (with larger organizations contributing more strongly to the total) or (2) normalized by organization size (all organizations contribute equally to the total).
+          The overall share of men and women per wage rank can be calculated in two ways: (1) at the individual level (with larger organizations contributing more strongly to the total) or (2) normalized by organization size (all organizations contribute equally to the total).
           Calculations can be further refined along the dimensions of specific organizational characteristics. The reference line depicts the overall share of women across all wage ranks in the selected organizations.
           A coding break of the CBS sector classfication between 2016 and 2017 affects of the sector and ownership classification.')
   })
@@ -230,8 +230,8 @@ server <- function(input, output, session) {
     paste('<strong>Notes:</strong> This figure visualizes sex segregation of wage earners across ten wage ranks within Dutch organizations. The underlying population are all wage earners (excluding interns, WSW-ers, and DGAs) in Dutch organizations with at least 100 employees during the month of September. 
           Calculations are based on administrative linked employer-employee register data <a target="_blank" href="https://www.cbs.nl/nl-nl/onze-diensten/maatwerk-en-microdata/microdata-zelf-onderzoek-doen/microdatabestanden/spolisbus-banen-en-lonen-volgens-polisadministratie">(SPOLIS)</a> covering the entire underlying population.
           Wage ranks are assigned to employees using the organization-specific distribution of hourly wages in September of a given year.
-          The first wage rank comprises the bottom 10% of wage earners, whereas the fifth wage rank comprises the top 10% of wage earners in each organization. 
-          The overall share of men and women per wage rank is calculated in two ways: (1) at the individual level (with larger organizations contributing more strongly to the total) or (2) normalized by organization size (all organizations contribute equally to the total).
+          The first wage rank comprises the bottom 10% of wage earners, whereas the tenth wage rank comprises the top 10% of wage earners in each organization. 
+          The overall share of men and women per wage rank can be calculated in two ways: (1) at the individual level (with larger organizations contributing more strongly to the total) or (2) normalized by organization size (all organizations contribute equally to the total).
           Calculations can be further refined along the dimensions of specific organizational characteristics. The reference line depicts the overall share of women across all wage ranks in the selected organizations.
           A coding break of the CBS sector classfication between 2016 and 2017 affects of the sector and ownership classification.')
   })
