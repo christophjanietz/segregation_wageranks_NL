@@ -222,7 +222,7 @@ server <- function(input, output, session) {
           The first wage rank comprises the bottom 20% of wage earners, whereas the fifth wage rank comprises the top 20% of wage earners in each organization. 
           The overall share of men and women per wage rank can be calculated in two ways: (1) at the individual level (with larger organizations contributing more strongly to the total) or (2) normalized by organization size (all organizations contribute equally to the total).
           Calculations can be further refined along the dimensions of specific organizational characteristics. The reference line depicts the overall share of women across all wage ranks in the selected organizations.
-          A coding break of the CBS sector classfication between 2016 and 2017 affects of the sector and ownership classification.')
+          A coding break of the CBS sector classfication between 2016 and 2017 affects of the sector and ownership categories.')
   })
   
   # Text: Notes (Wage deciles) --------------------------------------------------
@@ -233,7 +233,7 @@ server <- function(input, output, session) {
           The first wage rank comprises the bottom 10% of wage earners, whereas the tenth wage rank comprises the top 10% of wage earners in each organization. 
           The overall share of men and women per wage rank can be calculated in two ways: (1) at the individual level (with larger organizations contributing more strongly to the total) or (2) normalized by organization size (all organizations contribute equally to the total).
           Calculations can be further refined along the dimensions of specific organizational characteristics. The reference line depicts the overall share of women across all wage ranks in the selected organizations.
-          A coding break of the CBS sector classfication between 2016 and 2017 affects of the sector and ownership classification.')
+          A coding break of the CBS sector classfication between 2016 and 2017 affects of the sector and ownership categories.')
   })
   
   # Text: Colophon I -----------------------------------------------------------
