@@ -120,7 +120,7 @@ ui <- fluidPage(theme = shinytheme("simplex"),
                  bookmarkButton(id = "bookmark1", label='Bookmark'),
                  hr()
     ),
-    ## Structure of the main panel ---------------------------------------------
+    ## Main panel ------------------------------------------------------------
     mainPanel(width=9,
               tabsetPanel(
                 tabPanel("Wage quintiles",
@@ -150,12 +150,12 @@ server <- function(input, output, session) {
   setBookmarkExclude(c("bookmark1"))
   observeEvent(input$bookmark1, {session$doBookmark()})
   
-  # Get the user inputs in variables -------------------------------------------
+  # User input as variables ----------------------------------------------------
   wgt_u <- reactive({input$wgt})
   year_u <- reactive({input$years})
   subpop_u <- reactive({input$subpop})
   
-  # Subset the data based on the user input ------------------------------------
+  # Subset data based on user input --------------------------------------------
   q_data <- reactive ({
     q <- withinq %>%
       dplyr::filter(wgt==wgt_u() & year==year_u() & subpop==subpop_u()) %>% 
@@ -210,11 +210,11 @@ server <- function(input, output, session) {
             legend.text = element_text(size = 15))
     }
   
-  # Print plots I (wage quintiles) and II (wage deciles)------------------------
+  # Print plots I (Wage quintiles) and II (Wage deciles)------------------------
   output$quintileplot <- renderPlot({print(plotInput())})
   output$decileplot <- renderPlot({print(plotInput2())})
   
-  # Text: Notes I --------------------------------------------------------------
+  # Text: Notes (Wage quintiles) -----------------------------------------------
   output$notes <- renderText({ 
     paste('<strong>Notes:</strong> This figure visualizes sex segregation of wage earners across five wage ranks within Dutch organizations. The underlying population are all wage earners (excluding interns, WSW-ers, and DGAs) in Dutch organizations with at least 50 employees during the month of September. 
           Calculations are based on administrative linked employer-employee register data <a target="_blank" href="https://www.cbs.nl/nl-nl/onze-diensten/maatwerk-en-microdata/microdata-zelf-onderzoek-doen/microdatabestanden/spolisbus-banen-en-lonen-volgens-polisadministratie">(SPOLIS)</a> covering the entire underlying population. 
@@ -225,7 +225,7 @@ server <- function(input, output, session) {
           A coding break of the CBS sector classfication between 2016 and 2017 affects of the sector and ownership classification.')
   })
   
-  # Text: Notes II -------------------------------------------------------------
+  # Text: Notes (Wage deciles) --------------------------------------------------
   output$notes2 <- renderText({ 
     paste('<strong>Notes:</strong> This figure visualizes sex segregation of wage earners across ten wage ranks within Dutch organizations. The underlying population are all wage earners (excluding interns, WSW-ers, and DGAs) in Dutch organizations with at least 100 employees during the month of September. 
           Calculations are based on administrative linked employer-employee register data <a target="_blank" href="https://www.cbs.nl/nl-nl/onze-diensten/maatwerk-en-microdata/microdata-zelf-onderzoek-doen/microdatabestanden/spolisbus-banen-en-lonen-volgens-polisadministratie">(SPOLIS)</a> covering the entire underlying population.
@@ -267,6 +267,6 @@ server <- function(input, output, session) {
 
 } 
 
-# Run the app ------------------------------------------------------------------
+# Running the app ---------------------------------------------------------------
 enableBookmarking(store = "url")
 shinyApp(ui, server)
