@@ -1,5 +1,6 @@
 # Sex segregation across wage ranks in Dutch organizations, 2011-2023
 Dashboard visualizing sex segregation across wage ranks in Dutch organizations between 2011 to 2023.
+
 https://cjanietz.shinyapps.io/sexsegregation_wageranks_NL/
 
 Github: https://github.com/christophjanietz/sexsegregation_wageranks_NL \
