@@ -120,7 +120,7 @@ ui <- fluidPage(theme = shinytheme("simplex"),
                  bookmarkButton(id = "bookmark1", label='Bookmark'),
                  hr()
     ),
-    ## Main panel ------------------------------------------------------------
+    ## Structure of the main panel ---------------------------------------------
     mainPanel(width=9,
               tabsetPanel(
                 tabPanel("Wage quintiles",
@@ -150,12 +150,12 @@ server <- function(input, output, session) {
   setBookmarkExclude(c("bookmark1"))
   observeEvent(input$bookmark1, {session$doBookmark()})
   
-  # User input as variables ----------------------------------------------------
+  # Get the user inputs in variables -------------------------------------------
   wgt_u <- reactive({input$wgt})
   year_u <- reactive({input$years})
   subpop_u <- reactive({input$subpop})
   
-  # Subset data based on user input --------------------------------------------
+  # Subset the data based on the user input ------------------------------------
   q_data <- reactive ({
     q <- withinq %>%
       dplyr::filter(wgt==wgt_u() & year==year_u() & subpop==subpop_u()) %>% 
@@ -210,11 +210,11 @@ server <- function(input, output, session) {
             legend.text = element_text(size = 15))
     }
   
-  # Print plots I (Wage quintiles) and II (Wage deciles)------------------------
+  # Print plots I (wage quintiles) and II (wage deciles)------------------------
   output$quintileplot <- renderPlot({print(plotInput())})
   output$decileplot <- renderPlot({print(plotInput2())})
   
-  # Text: Notes (Wage quintiles) -----------------------------------------------
+  # Text: Notes I --------------------------------------------------------------
   output$notes <- renderText({ 
     paste('<strong>Notes:</strong> This figure visualizes sex segregation of wage earners across five wage ranks within Dutch organizations. The underlying population are all wage earners (excluding interns, WSW-ers, and DGAs) in Dutch organizations with at least 50 employees during the month of September. 
           Calculations are based on administrative linked employer-employee register data <a target="_blank" href="https://www.cbs.nl/nl-nl/onze-diensten/maatwerk-en-microdata/microdata-zelf-onderzoek-doen/microdatabestanden/spolisbus-banen-en-lonen-volgens-polisadministratie">(SPOLIS)</a> covering the entire underlying population. 
@@ -225,7 +225,7 @@ server <- function(input, output, session) {
           A coding break in the CBS sector classfication between 2016 and 2017 affects of the sector and ownership categories.')
   })
   
-  # Text: Notes (Wage deciles) --------------------------------------------------
+  # Text: Notes II -------------------------------------------------------------
   output$notes2 <- renderText({ 
     paste('<strong>Notes:</strong> This figure visualizes sex segregation of wage earners across ten wage ranks within Dutch organizations. The underlying population are all wage earners (excluding interns, WSW-ers, and DGAs) in Dutch organizations with at least 100 employees during the month of September. 
           Calculations are based on administrative linked employer-employee register data <a target="_blank" href="https://www.cbs.nl/nl-nl/onze-diensten/maatwerk-en-microdata/microdata-zelf-onderzoek-doen/microdatabestanden/spolisbus-banen-en-lonen-volgens-polisadministratie">(SPOLIS)</a> covering the entire underlying population.
@@ -241,7 +241,7 @@ server <- function(input, output, session) {
     paste('<strong>Colophon:</strong> This dashboard was created by <a target="_blank" href="https://christophjanietz.github.io">Christoph Janietz</a> with <code>R</code>, <code>RStudio</code> and <code>Shiny</code>. 
         This dashboard uses non-public microdata from Statistics Netherlands (CBS). Under certain conditions, these microdata are accessible for statistical and scientific research. For further information: <a target="_blank" href = "mailto:microdata@cbs.nl">microdata@cbs.nl</a>.
         Data is prepared and analyzed using <code>NIDIO</code> - an open code infrastructure assisting with the use of Dutch administrative register data <a target="_blank" href="https://osf.io/9b2xh/">(https://osf.io/9b2xh/)</a>.
-        Contact me <a target="_blank" href = "mailto:c.janietz@rug.nl?subject = Feedback&body = Message">here</a> for questions or suggestions. Last update: January 2025.')
+        Contact me <a target="_blank" href = "mailto:c.janietz@rug.nl?subject = Feedback&body = Message">here</a> for questions or suggestions. Last update: February 2025.')
   })
   
   # Text: Colophon II ----------------------------------------------------------
@@ -249,7 +249,7 @@ server <- function(input, output, session) {
     paste('<strong>Colophon:</strong> This dashboard was created by <a target="_blank" href="https://christophjanietz.github.io">Christoph Janietz</a> with <code>R</code>, <code>RStudio</code> and <code>Shiny</code>. 
         This dashboard uses non-public microdata from Statistics Netherlands (CBS). Under certain conditions, these microdata are accessible for statistical and scientific research. For further information: <a target="_blank" href = "mailto:microdata@cbs.nl">microdata@cbs.nl</a>.
         Data is prepared and analyzed using <code>NIDIO</code> - an open code infrastructure assisting with the use of Dutch administrative register data <a target="_blank" href="https://osf.io/9b2xh/">(https://osf.io/9b2xh/)</a>.
-        Contact me <a target="_blank" href = "mailto:c.janietz@rug.nl?subject = Feedback&body = Message">here</a> for questions or suggestions. Last update: January 2025.')
+        Contact me <a target="_blank" href = "mailto:c.janietz@rug.nl?subject = Feedback&body = Message">here</a> for questions or suggestions. Last update: February 2025.')
   })
   
   # Download handlers ----------------------------------------------------------
@@ -267,6 +267,6 @@ server <- function(input, output, session) {
 
 } 
 
-# Running the app ---------------------------------------------------------------
+# Run the app ------------------------------------------------------------------
 enableBookmarking(store = "url")
 shinyApp(ui, server)
