@@ -2,21 +2,26 @@
 ### Data preparation
 ### Project: Beyond Boardroom (9607)
 ### Author: Christoph Janietz (c.janietz@rug.nl)
-### Last update: 17-01-2025
+### Last update: 04-03-2025
 
 # Libraries and functions ------------------------------------------------------
 library(dplyr)
 library(readxl)
 
 # Import spreadsheets ----------------------------------------------------------
-withind <- read_excel("./withind.xls")
-withinq <- read_excel("./withinq.xls")
+sexseg <- read_excel("./sexseg.xls")
+ethnicseg  <- read_excel("./ethnicseg.xls")
 
 # Transform variable wgt into FALSE/TRUE ---------------------------------------
-withind <- withind %>%
+sexseg <- sexseg %>%
   mutate(wgt = wgt=="Yes")
-withinq <- withinq %>%
+ethnicseg <- ethnicseg %>%
   mutate(wgt = wgt=="Yes")
 
+# Reorder factor levels in ethnicseg
+ethnicseg <- ethnicseg %>%
+  mutate(wstrn = factor(wstrn,
+                        levels = c("Western","Non-Western")))
+
 # Save datasets ----------------------------------------------------------------
-save(withind, withinq, file="./sexseg_org.RData")
+save(sexseg, ethnicseg, file="./seg_org.RData")
